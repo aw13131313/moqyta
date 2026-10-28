@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moqyta Official - Luxury Local Fashion</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: {
+                            50: '#FFFFFF',
+                            100: '#F8F4FB',
+                            200: '#EBE3F2',
+                        },
+                        plum: {
+                            50: '#F8F3FC',
+                            100: '#F0E5F8',
+                            400: '#B57AD6',
+                            500: '#9B4DC4',
+                            600: '#7A2E9E', // Brand Primary Moqyta
+                            700: '#5F2080', // Brand Dark
+                            900: '#3A1250',
+                        },
+                        charcoal: {
+                            800: '#262626',
+                            900: '#1A1A1A',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for clean luxury feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CDB8DC;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7A2E9E;
+        }
+            html { scroll-padding-top: 1rem; }
+            @keyframes cartbump { 0%,100% { transform: scale(1); } 40% { transform: scale(1.35); } 70% { transform: scale(.9); } }
+        .cart-bump { animation: cartbump .5s ease; }
+    </style>
+</head>
+<body class="bg-cream-50 text-charcoal-900 font-sans antialiased selection:bg-plum-100 selection:text-plum-700">
+
+    <!-- Header / Navbar -->
+    <header class="relative z-40 bg-white border-b border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 md:h-24">
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-charcoal-900 hover:text-plum-600 focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#beranda" class="flex items-center">
+                    <img src="moqyta-logo.png" alt="Moqyta" class="h-11 md:h-14 w-auto">
+                </a>
+
+                <!-- Navigation Links (Desktop) -->
+                <nav class="hidden lg:flex space-x-10 text-xs font-semibold uppercase tracking-widest text-charcoal-800">
+                    <a href="#beranda" class="hover:text-plum-600 transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-plum-600 hover:after:w-full after:transition-all">Beranda</a>
+                    <a href="#ransel" class="hover:text-plum-600 transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-plum-600 hover:after:w-full after:transition-all">Ransel</a>
+                    <a href="#totebag" class="hover:text-plum-600 transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-plum-600 hover:after:w-full after:transition-all">Tote Bag</a>
+                    <a href="#selempang" class="hover:text-plum-600 transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-plum-600 hover:after:w-full after:transition-all">Selempang</a>
+                    <a href="#tentang" class="hover:text-plum-600 transition-colors py-2 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-plum-600 hover:after:w-full after:transition-all">Filosofi</a>
+                </nav>
+
+                <!-- Utility Icons -->
+                <div class="flex items-center space-x-6">
+                    <button id="search-btn" class="text-charcoal-800 hover:text-plum-600 transition-colors" title="Cari" aria-label="Cari produk">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    <button id="cart-btn" class="text-charcoal-800 hover:text-plum-600 transition-colors relative" title="Keranjang Belanja">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-plum-600 text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-plum-600/10 px-6 py-6 space-y-4 text-xs font-semibold tracking-widest uppercase">
+            <a href="#beranda" class="mobile-link block py-2 border-b border-cream-200/50">Beranda</a>
+            <a href="#ransel" class="mobile-link block py-2 border-b border-cream-200/50">Ransel</a>
+            <a href="#totebag" class="mobile-link block py-2 border-b border-cream-200/50">Tote Bag</a>
+            <a href="#selempang" class="mobile-link block py-2 border-b border-cream-200/50">Selempang</a>
+            <a href="#tentang" class="mobile-link block py-2">Tentang Moqyta</a>
+        </div>
+        <!-- Search Panel -->
+        <div id="search-panel" class="hidden border-t border-plum-600/10">
+            <div class="max-w-3xl mx-auto px-4 py-4">
+                <div class="flex items-center border-b-2 border-plum-600 pb-2">
+                    <i class="fas fa-search text-plum-600 mr-3"></i>
+                    <input id="search-input" type="text" autocomplete="off" placeholder="Cari ransel, tote bag, atau selempang..." class="flex-1 outline-none bg-transparent text-sm">
+                    <button id="search-close" aria-label="Tutup pencarian" class="text-charcoal-800 hover:text-plum-600"><i class="fas fa-times"></i></button>
+                </div>
+                <div id="search-results" class="mt-3 max-h-[60vh] overflow-y-auto divide-y divide-cream-200"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Editorial Section (foto selalu utuh 16:9) -->
+    <section id="beranda" class="relative overflow-hidden bg-[#f0e9dd] aspect-[16/9] flex items-center">
+        <img src="foto-product/hero2.png" alt="Koleksi tote bag Moqyta" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent lg:hidden"></div>
+        <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-[62%] sm:max-w-xl">
+                <div class="hidden sm:flex items-center gap-4 mb-5">
+                    <span class="block w-10 h-px bg-plum-400 lg:bg-plum-600"></span>
+                    <span class="text-plum-100 lg:text-plum-600 text-xs font-semibold tracking-[0.35em] uppercase">Moqyta</span>
+                </div>
+                <h1 class="font-serif text-[0.95rem] leading-[1.15] sm:text-5xl lg:text-7xl sm:leading-[1.05] text-white font-normal mb-1 sm:mb-5 [text-shadow:0_2px_14px_rgba(0,0,0,0.4)]">
+                    Dirancang<br><span class="italic text-plum-400 lg:text-plum-600">untuk fashion kamu.</span>
+                </h1>
+                <p class="text-white text-[8.5px] leading-snug sm:text-base md:text-lg font-light max-w-md mb-2 sm:mb-8 sm:leading-relaxed [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
+                    Ransel, Tote Bag, dan Selempang. Fashionable and Daily.
+                </p>
+                <div class="flex flex-row gap-1.5 sm:gap-4">
+                    <a href="#ransel" class="bg-plum-600 hover:bg-plum-700 text-white px-2.5 py-1.5 text-[7px] sm:px-10 sm:py-4 sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest transition-all text-center">Lihat Koleksi</a>
+                    <a href="#tentang" class="border border-white text-white hover:bg-white hover:text-charcoal-900 px-2.5 py-1.5 text-[7px] sm:px-10 sm:py-4 sm:text-xs font-semibold uppercase tracking-wider sm:tracking-widest transition-all text-center">Tentang Moqyta</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Highlights -->
+    <section id="highlights" class="bg-cream-50 border-y border-cream-200 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-cream-200">
+                <div class="pt-4 md:pt-0 px-4">
+                    <i class="fas fa-gem text-2xl text-plum-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900">Detail</h3>
+                    <p class="text-xs text-charcoal-800/70 mt-1 font-light">Setiap tas dicek dengan standar yang sama sebelum dikirim.</p>
+                </div>
+                <div class="pt-4 md:pt-0 px-4">
+                    <i class="fas fa-briefcase text-2xl text-plum-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900">Dimensi</h3>
+                    <p class="text-xs text-charcoal-800/70 mt-1 font-light">Dimensi tertera di tiap produk. Tinggal pilih yang pas.</p>
+                </div>
+                <div class="pt-4 md:pt-0 px-4">
+                    <i class="fas fa-headset text-2xl text-plum-600 mb-3"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900">Pesan Mudah</h3>
+                    <p class="text-xs text-charcoal-800/70 mt-1 font-light">Langsung lewat WhatsApp atau Shopee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KOLEKSI RANSEL -->
+    <section id="ransel" class="py-10 sm:py-12 bg-cream-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-cream-200 pb-6">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal-900 mt-1">Ransel</h2>
+                </div>
+            </div>
+            <div id="grid-ransel" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+            <div class="mt-10 text-center">
+                <a href="#/kategori/ransel" class="inline-block border border-plum-600 text-plum-600 hover:bg-plum-600 hover:text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300">Lihat Produk Ransel Lainnya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KOLEKSI TOTE BAG -->
+    <section id="totebag" class="py-10 sm:py-12 bg-cream-100/50 border-t border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-cream-200 pb-6">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal-900 mt-1">Tote Bag</h2>
+                </div>
+            </div>
+            <div id="grid-totebag" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+            <div class="mt-10 text-center">
+                <a href="#/kategori/totebag" class="inline-block border border-plum-600 text-plum-600 hover:bg-plum-600 hover:text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300">Lihat Produk Tote Bag Lainnya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- KOLEKSI SELEMPANG -->
+    <section id="selempang" class="py-10 sm:py-12 bg-cream-50 border-t border-cream-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 border-b border-cream-200 pb-6">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-normal text-charcoal-900 mt-1">Selempang</h2>
+                </div>
+            </div>
+            <div id="grid-selempang" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+            <div class="mt-10 text-center">
+                <a href="#/kategori/selempang" class="inline-block border border-plum-600 text-plum-600 hover:bg-plum-600 hover:text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300">Lihat Produk Selempang Lainnya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Filosofi Brand -->
+        <!-- HALAMAN KATEGORI (semua produk) -->
+    <section id="category-page" class="hidden py-12 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="goBack()" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-plum-600 hover:text-plum-700 mb-8">
+                <i class="fas fa-arrow-left"></i> Kembali
+            </button>
+            <div class="mb-10 border-b border-cream-200 pb-6">
+                <span id="cat-eyebrow" class="text-xs uppercase font-semibold text-plum-600 tracking-widest"></span>
+                <h2 id="cat-title" class="font-serif text-3xl sm:text-4xl font-normal text-charcoal-900 mt-1"></h2>
+            </div>
+            <div id="grid-cat" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+            <div class="mt-14 text-center">
+                <button onclick="goBack()" class="border border-plum-600 text-plum-600 hover:bg-plum-600 hover:text-white px-10 py-3.5 text-xs font-bold uppercase tracking-widest transition-all duration-300">Kembali ke Beranda</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-20 bg-charcoal-900 text-cream-100">
+        <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
+            <span class="text-xs uppercase tracking-[0.3em] text-plum-500 font-semibold">Tentang Moqyta</span>
+            <h2 class="font-serif text-3xl sm:text-5xl leading-tight font-normal">
+                Brand tas asli Indonesia dengan bahan premium yang dirancang untuk fashion kamu.
+            </h2>
+            <p class="text-cream-200/70 font-light text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+                Bahan dipilih, jahitan dicek, dan detail yang diperhatikan dalam setiap proses.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal-900 text-cream-200 border-t border-charcoal-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-charcoal-800">
+                
+                <!-- Brand Info & Socials -->
+                <div class="md:col-span-4 space-y-4">
+                    <a href="#beranda" class="inline-block"><img src="moqyta-logo-white.png" alt="Moqyta" class="h-16 w-auto"></a>
+                    <p class="text-xs text-cream-200/60 leading-relaxed font-light max-w-sm mb-4">
+                        Moqyta dibuat dengan cermat, dirancang untuk bertahan lama.
+                    </p>
+                    <div class="flex space-x-4 pt-2">
+                        <a href="https://www.instagram.com/moqyta_official/" target="_blank" class="w-10 h-10 rounded-full bg-charcoal-800 flex items-center justify-center text-cream-200 hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all text-sm shadow-md"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@moqyta" target="_blank" aria-label="TikTok" class="w-10 h-10 rounded-full bg-charcoal-800 flex items-center justify-center text-cream-200 hover:bg-black hover:text-white transition-all text-sm shadow-md"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/6281327108030" target="_blank" class="w-10 h-10 rounded-full bg-charcoal-800 flex items-center justify-center text-cream-200 hover:bg-green-500 hover:text-white transition-all text-sm shadow-md"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Store Location -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white">Toko Offline</h4>
+                    <p class="text-xs text-cream-200/80 font-light leading-relaxed">
+                        <i class="fas fa-map-marker-alt text-plum-500 mr-2 w-4 text-center"></i> Jl. Gubernur Suryo No.45<br>
+                        <span class="ml-7 block">Sengon, Kec. Jombang, Kabupaten Jombang, Jawa Timur 61419, Indonesia</span>
+                    </p>
+                    <a href="https://maps.app.goo.gl/1XCkR7z3SXxcyjup7" target="_blank" class="inline-block mt-2 text-[11px] font-semibold text-plum-400 hover:text-plum-300 uppercase tracking-widest border-b border-plum-400 pb-0.5 transition-colors">
+                        Buka di Google Maps <i class="fas fa-external-link-alt ml-1 text-[9px]"></i>
+                    </a>
+                    
+                    <div class="mt-5 bg-charcoal-800/60 p-3.5 rounded-md border border-charcoal-700/50 shadow-inner">
+                        <p class="text-[11px] font-semibold tracking-widest text-cream-100 flex items-center">
+                            <i class="far fa-clock text-plum-400 mr-2.5 text-sm"></i>
+                            BUKA SETIAP HARI 09.00 - 21.00
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Toko Online & Shopee -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="text-xs font-semibold uppercase tracking-widest text-white">Marketplace</h4>
+                    <p class="text-xs text-cream-200/60 font-light mb-3">
+                        Belanja melalui official store Moqyta di Shopee dengan pilihan pengiriman dan pembayaran yang praktis.
+                    </p>
+                    <a href="https://shopee.co.id/shop/323104309" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-[#ee4d2d] hover:bg-[#d73f22] text-white px-6 py-3.5 text-xs font-semibold uppercase tracking-widest transition-all rounded-sm w-full sm:w-auto shadow-lg shadow-[#ee4d2d]/20">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Belanja di Shopee</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-cream-200/50 font-light">
+                <p>&copy; 2026 MOQYTA Official. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0 uppercase tracking-widest">Proudly Crafted in Jombang, Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAIL MODAL (Multi-Photo Interactive System) -->
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-charcoal-900/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 transition-opacity duration-300">
+        
+        <button id="modal-prev" aria-label="Produk sebelumnya" class="fixed left-3 sm:left-8 top-1/2 -translate-y-1/2 z-[60] w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/90 hover:bg-plum-600 hover:text-white text-charcoal-900 shadow-lg flex items-center justify-center transition-colors"><i class="fas fa-chevron-left"></i></button>
+        <button id="modal-next" aria-label="Produk berikutnya" class="fixed right-3 sm:right-8 top-1/2 -translate-y-1/2 z-[60] w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/90 hover:bg-plum-600 hover:text-white text-charcoal-900 shadow-lg flex items-center justify-center transition-colors"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="bg-cream-50 w-full max-w-4xl shadow-2xl border border-cream-200 overflow-hidden relative max-h-[90vh] flex flex-col md:flex-row">
+            
+            <!-- Close Modal Button -->
+            <button id="close-modal-btn" class="absolute top-4 right-4 z-20 w-10 h-10 bg-cream-50/80 hover:bg-plum-600 hover:text-white text-charcoal-900 rounded-full flex items-center justify-center transition-colors">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <!-- Left Side: Interactive Multi-Photo Gallery -->
+            <div class="w-full md:w-1/2 p-4 md:p-6 bg-cream-100/50 flex flex-col justify-between">
+                <!-- Main Large Image Preview -->
+                <div class="relative aspect-[3/4] w-full md:w-auto md:h-[64vh] md:max-h-[620px] mx-auto shrink-0 overflow-hidden bg-cream-200 mb-4 shadow-sm">
+                    <img id="modal-main-img" src="" alt="Main Preview" class="w-full h-full object-cover transition-all duration-300">
+                </div>
+
+                <!-- Thumbnails Bar (Multi-Photo Picker) -->
+                <div>
+                    <span class="text-[10px] uppercase font-semibold text-charcoal-800/60 tracking-widest mb-2 block">Sudut Foto (Klik untuk melihat):</span>
+                    <div id="modal-thumbnails" class="flex gap-2">
+                        <!-- Rendered dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Product Details & Controls -->
+            <div class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[500px] md:max-h-[600px]">
+                
+                <div class="space-y-5">
+                    <div>
+                        <span id="modal-category" class="text-xs uppercase font-semibold tracking-widest text-plum-600">Tas</span>
+                        <h2 id="modal-title" class="font-serif text-2xl md:text-3xl font-normal text-charcoal-900 mt-1">Nama Produk</h2>
+                        <p id="modal-price" class="text-xl font-bold text-plum-700 mt-3">Rp 0</p>
+                    </div>
+
+                    <p id="modal-desc" class="text-xs text-charcoal-800/80 leading-relaxed font-light border-y border-cream-200 py-3">
+                        Deskripsi singkat produk akan muncul di sini.
+                    </p>
+
+                    <!-- Color Selector Swatches -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-widest text-charcoal-900 mb-2">
+                            Pilihan Warna: <span id="selected-color-label" class="font-normal text-plum-600">Plum</span>
+                        </label>
+                        <div id="modal-colors" class="flex space-x-3">
+                            <!-- Color Swatches -->
+                        </div>
+                    </div>
+
+                    <!-- Size Selector -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-xs font-semibold uppercase tracking-widest text-charcoal-900">Ukuran:</label>
+                            
+                        </div>
+                        <div id="modal-sizes" class="flex flex-wrap gap-2">
+                            <!-- Size buttons -->
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Action Controls: Quantity & Buttons -->
+                <div class="pt-6 space-y-3 border-t border-cream-200 mt-6">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-charcoal-900">Jumlah:</span>
+                        <div class="flex items-center border border-cream-200 bg-white">
+                            <button id="qty-minus" class="px-3 py-1.5 text-charcoal-800 hover:bg-cream-100 font-bold text-sm">-</button>
+                            <span id="qty-val" class="px-4 py-1.5 text-xs font-semibold text-charcoal-900">1</span>
+                            <button id="qty-plus" class="px-3 py-1.5 text-charcoal-800 hover:bg-cream-100 font-bold text-sm">+</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <button id="modal-add-cart" class="w-full bg-plum-600 hover:bg-plum-700 text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>+ Keranjang</span>
+                        </button>
+                        <button id="modal-wa-buy" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                            <span>Beli via WA</span>
+                        </button>
+                        <button id="modal-shopee-buy" class="sm:col-span-2 w-full bg-[#ee4d2d] hover:bg-[#d73f22] text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                            <i class="fas fa-bag-shopping text-sm"></i>
+                            <span>Beli via Shopee</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- CART SIDE DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+        <!-- Backdrop -->
+        <div id="cart-backdrop" class="absolute inset-0 bg-charcoal-900/60 backdrop-blur-xs"></div>
+        
+        <!-- Drawer Panel -->
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-cream-50 shadow-2xl flex flex-col transform transition-transform duration-300">
+            <!-- Header -->
+            <div class="p-6 border-b border-cream-200 flex justify-between items-center bg-cream-100">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shopping-bag text-plum-600"></i>
+                    <h3 class="font-serif text-lg font-semibold text-charcoal-900">Keranjang Belanja</h3>
+                </div>
+                <button id="close-cart-btn" class="text-charcoal-800 hover:text-plum-600 p-2">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Items List -->
+            <div id="cart-items-container" class="flex-1 p-6 overflow-y-auto space-y-4">
+                <!-- Cart items rendered dynamically -->
+            </div>
+
+            <!-- Footer Summary -->
+            <div class="p-6 border-t border-cream-200 bg-cream-100 space-y-4">
+                <div class="flex justify-between items-center text-sm font-semibold">
+                    <span class="uppercase tracking-widest text-charcoal-900">Subtotal:</span>
+                    <span id="cart-subtotal" class="text-plum-700 text-base font-bold">Rp 0</span>
+                </div>
+                <p class="text-[11px] text-charcoal-800/60 font-light">Pajak dan ongkos kirim dihitung saat checkout.</p>
+                <button id="cart-checkout-wa" class="w-full bg-plum-600 hover:bg-plum-700 text-white py-4 text-xs font-semibold uppercase tracking-widest shadow-md transition-all flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp text-base"></i>
+                    <span>Checkout Via WhatsApp</span>
+                </button>
+                <button id="cart-checkout-shopee" class="w-full bg-[#ee4d2d] hover:bg-[#d73f22] text-white py-4 text-xs font-semibold uppercase tracking-widest shadow-md transition-all flex items-center justify-center space-x-2">
+                    <i class="fas fa-bag-shopping text-base"></i>
+                    <span>Checkout Via Shopee</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-charcoal-900 text-cream-50 px-5 py-3 shadow-xl border-l-4 border-plum-600 text-xs font-medium flex items-center space-x-3">
+        <i class="fas fa-check-circle text-plum-500 text-base"></i>
+        <span id="toast-msg">Item berhasil ditambahkan!</span>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA KATALOG PRODUK MOQYTA DENGAN MULTI-FOTO
+        // DATA PRODUK. Foto per warna ada di folder foto-product/. Harga masih contoh (199000), ganti sesuai harga asli.
+        // DATA PRODUK. Foto per warna ada di folder foto-product/.
+        const PRODUCTS = {
+ "ransel": [
+  {
+   "id": "ransel-ivonie",
+   "name": "Ransel Ivonie",
+   "category": "Ransel",
+   "tag": "",
+   "price": 245000,
+   "sizes": [
+    "Tebal 13 × Lebar 25 × Tinggi 37 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/ivonie-black.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/ivonie-grey.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#BFA97F",
+     "image": "foto-product/ransel/ivonie-khaki.jpg"
+    }
+   ],
+   "dimensi": "13 × 25 × 37 cm",
+   "description": "Ransel Ivonie tersedia dalam 3 pilihan warna."
+  },
+  {
+   "id": "ransel-audrey",
+   "name": "Ransel Audrey",
+   "category": "Ransel",
+   "tag": "",
+   "price": 255000,
+   "sizes": [
+    "Tebal 14,5 × Lebar 28 × Tinggi 44 cm"
+   ],
+   "colors": [
+    {
+     "name": "Army",
+     "hex": "#5A6B3E",
+     "image": "foto-product/ransel/audrey-army.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/audrey-grey.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#BFA97F",
+     "image": "foto-product/ransel/audrey-khaki.jpg"
+    }
+   ],
+   "dimensi": "14.5 × 28 × 44 cm",
+   "description": "Ransel Audrey tersedia dalam 3 pilihan warna."
+  },
+  {
+   "id": "ransel-vio",
+   "name": "Ransel Vio",
+   "category": "Ransel",
+   "tag": "",
+   "price": 265000,
+   "sizes": [
+    "Tebal 13 × Lebar 26,5 × Tinggi 39,5 cm"
+   ],
+   "colors": [
+    {
+     "name": "Bata",
+     "hex": "#A4472C",
+     "image": "foto-product/ransel/vio-bata.jpg"
+    },
+    {
+     "name": "Emerald",
+     "hex": "#1E7F5C",
+     "image": "foto-product/ransel/vio-emerald.jpg"
+    },
+    {
+     "name": "Khaki",
+     "hex": "#BFA97F",
+     "image": "foto-product/ransel/vio-khaki.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/vio-tosca.jpg"
+    }
+   ],
+   "dimensi": "13 × 26.5 × 39.5 cm",
+   "description": "Ransel Vio tersedia dalam 4 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Vio-Moqyta-Momoqy-i.323104309.43351231381?extraParams=%7B%22display_model_id%22%3A243429366446%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7rbk6-ma8dggevrgjpe7"
+  },
+  {
+   "id": "ransel-khanza",
+   "name": "Ransel Khanza",
+   "category": "Ransel",
+   "tag": "",
+   "price": 220000,
+   "sizes": [
+    "Tebal 12 × Lebar 28 × Tinggi 43 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/khanza-black.jpg"
+    },
+    {
+     "name": "Blue",
+     "hex": "#4A77B4",
+     "image": "foto-product/ransel/khanza-blue.jpg"
+    },
+    {
+     "name": "Cream",
+     "hex": "#F1E8D2",
+     "image": "foto-product/ransel/khanza-krem.jpg"
+    }
+   ],
+   "dimensi": "12 × 28 × 43 cm",
+   "description": "Ransel Khanza tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Khanza-Momoqy-Moqyta-i.323104309.52164347331?extraParams=%7B%22display_model_id%22%3A267800081669%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-81zto-mqvq61pi1jpf54"
+  },
+  {
+   "id": "ransel-florie",
+   "name": "Ransel Florie",
+   "category": "Ransel",
+   "tag": "",
+   "price": 210000,
+   "sizes": [
+    "Tebal 13 × Lebar 28 × Tinggi 40 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/florie-black.jpg"
+    },
+    {
+     "name": "Cream",
+     "hex": "#F1E8D2",
+     "image": "foto-product/ransel/florie-cream.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/florie-salem.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/florie-tosca.jpg"
+    }
+   ],
+   "dimensi": "13 × 28 × 40 cm",
+   "description": "Ransel Florie tersedia dalam 4 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Florie-Moqyta-Momoqy-i.323104309.56956354722?extraParams=%7B%22display_model_id%22%3A400575130067%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224p-ml354tlhxrt255"
+  },
+  {
+   "id": "ransel-tamara",
+   "name": "Ransel Tamara",
+   "category": "Ransel",
+   "tag": "",
+   "price": 210000,
+   "sizes": [
+    "Tebal 11 × Lebar 25 × Tinggi 34 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/tamara-black.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/tamara-lilac.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/tamara-tosca.jpg"
+    }
+   ],
+   "dimensi": "11 × 25 × 34 cm",
+   "description": "Ransel Tamara tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Tamara-Moqyta-Momoqy-i.323104309.49256378460?extraParams=%7B%22display_model_id%22%3A395575094482%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224v-ml354tknryti34"
+  },
+  {
+   "id": "ransel-brina",
+   "name": "Ransel Brina",
+   "category": "Ransel",
+   "tag": "",
+   "price": 260000,
+   "sizes": [
+    "Tebal 12 × Lebar 29 × Tinggi 36 cm"
+   ],
+   "colors": [
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/brina-tosca.jpg"
+    }
+   ],
+   "dimensi": "12 × 29 × 36 cm",
+   "description": "Ransel Brina tersedia dalam 1 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Brina-Moqyta-Momoqy-i.323104309.27843839186?extraParams=%7B%22display_model_id%22%3A440323122488%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224p-migswlatl69v70"
+  },
+  {
+   "id": "ransel-cici",
+   "name": "Ransel Cici",
+   "category": "Ransel",
+   "tag": "",
+   "price": 160000,
+   "sizes": [
+    "Tebal 11 × Lebar 26 × Tinggi 23 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/cici-black.jpg"
+    },
+    {
+     "name": "Blue",
+     "hex": "#4A77B4",
+     "image": "foto-product/ransel/cici-blue.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/cici-lilac.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/cici-tosca.jpg"
+    }
+   ],
+   "dimensi": "26 × 23 × 11 cm",
+   "description": "Ransel Cici tersedia dalam 4 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Cici-Moqyta-Momoqy-i.323104309.24494819408?extraParams=%7B%22display_model_id%22%3A243347608854%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7rbkb-m974ix92n2fx62"
+  },
+  {
+   "id": "ransel-mono",
+   "name": "Ransel Mono",
+   "category": "Ransel",
+   "tag": "",
+   "price": 225000,
+   "sizes": [
+    "Tebal 12,5 × Lebar 32 × Tinggi 23 cm"
+   ],
+   "colors": [
+    {
+     "name": "Blue",
+     "hex": "#4A77B4",
+     "image": "foto-product/ransel/mono-blue.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/mono-grey.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#F2A7C3",
+     "image": "foto-product/ransel/mono-pink.jpg"
+    }
+   ],
+   "dimensi": "32 × 23 × 12.5 cm",
+   "description": "Ransel Mono tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Mono-Moqyta-Momoqy-i.323104309.40551004189?extraParams=%7B%22display_model_id%22%3A290080248754%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7rbk4-ma8dggg9mlsq9a"
+  },
+  {
+   "id": "ransel-akira",
+   "name": "Ransel Akira",
+   "category": "Ransel",
+   "tag": "",
+   "price": 195000,
+   "sizes": [
+    "Tebal 14 × Lebar 28 × Tinggi 32 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/akira-black.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/akira-lilac.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/akira-salem.jpg"
+    }
+   ],
+   "dimensi": "14 × 28 × 32 cm",
+   "description": "Ransel Akira tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Akira-moqyta-Momoqy-i.323104309.51256362647?extraParams=%7B%22display_model_id%22%3A435574898575%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224x-ml1y65t0ey2t04"
+  },
+  {
+   "id": "ransel-keina",
+   "name": "Ransel Keina",
+   "category": "Ransel",
+   "tag": "",
+   "price": 180000,
+   "sizes": [
+    "Tebal 11 × Lebar 24 × Tinggi 26 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/keina-black.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/keina-grey.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/keina-lilac.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/keina-salem.jpg"
+    }
+   ],
+   "dimensi": "11 × 24 × 26 cm",
+   "description": "Ransel Keina tersedia dalam 4 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Keina-Moqyta-Momoqy-i.323104309.40178834008?extraParams=%7B%22display_model_id%22%3A282414173116%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-82252-ml08kkghqf43b6"
+  },
+  {
+   "id": "ransel-jeju",
+   "name": "Ransel Jeju",
+   "category": "Ransel",
+   "tag": "",
+   "price": 175000,
+   "sizes": [
+    "Tebal 11 × Lebar 24 × Tinggi 25 cm"
+   ],
+   "colors": [
+    {
+     "name": "Bata",
+     "hex": "#A4472C",
+     "image": "foto-product/ransel/jeju-bata.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/ransel/jeju-black.jpg"
+    },
+    {
+     "name": "Cream",
+     "hex": "#F1E8D2",
+     "image": "foto-product/ransel/jeju-cream.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/jeju-tosca.jpg"
+    }
+   ],
+   "dimensi": "11 × 24 × 25 cm",
+   "description": "Ransel Jeju tersedia dalam 4 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Jeju-Moqyta-Momoqy-i.323104309.58156321997?extraParams=%7B%22display_model_id%22%3A282414172123%2C%22model_selection_logic%22%3A3%7D&image_id=id-11134207-82251-ml08kked6gw2de"
+  },
+  {
+   "id": "ransel-mikha",
+   "name": "Ransel Mikha",
+   "category": "Ransel",
+   "tag": "",
+   "price": 200000,
+   "sizes": [
+    "Tebal 10 × Lebar 21 × Tinggi 28 cm"
+   ],
+   "colors": [
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/mikha-lilac.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/mikha-salem.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/mikha-tosca.jpg"
+    }
+   ],
+   "dimensi": "10 × 21 × 28 cm",
+   "description": "Ransel Mikha tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Mikha-Moqyta-Momoqy-i.323104309.46103374490?extraParams=%7B%22display_model_id%22%3A380322964243%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224p-migswlau68so1c"
+  },
+  {
+   "id": "ransel-meysha",
+   "name": "Ransel Meysha",
+   "category": "Ransel",
+   "tag": "",
+   "price": 210000,
+   "sizes": [
+    "Tebal 13 × Lebar 24,5 × Tinggi 30 cm"
+   ],
+   "colors": [
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/meysha-lilac.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/meysha-salem.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/meysha-tosca.jpg"
+    }
+   ],
+   "dimensi": "13 × 24.5 × 30 cm",
+   "description": "Ransel Meysha tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Meysa-Momoqy-Moqyta-i.323104309.50000387138?extraParams=%7B%22display_model_id%22%3A307102924441%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-8224w-mgf2t381kuff12"
+  },
+  {
+   "id": "ransel-star",
+   "name": "Ransel Star",
+   "category": "Ransel",
+   "tag": "",
+   "price": 210000,
+   "sizes": [
+    "Tebal 10 × Lebar 23 × Tinggi 30 cm"
+   ],
+   "colors": [
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/star-grey.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/star-salem.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/ransel/star-tosca.jpg"
+    }
+   ],
+   "dimensi": "10 × 23 × 30 cm",
+   "description": "Ransel Star tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Star-Moqyta-Momoqy-i.323104309.41412063565?extraParams=%7B%22display_model_id%22%3A147907734171%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7ra0p-md6zza2j3ews4c"
+  },
+  {
+   "id": "ransel-alyssa",
+   "name": "Ransel Alyssa",
+   "category": "Ransel",
+   "tag": "",
+   "price": 215000,
+   "sizes": [
+    "Tebal 11 × Lebar 24 × Tinggi 30 cm"
+   ],
+   "colors": [
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/ransel/alyssa-grey.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/ransel/alyssa-lilac.jpg"
+    },
+    {
+     "name": "Salem",
+     "hex": "#F0A08A",
+     "image": "foto-product/ransel/alyssa-salem.jpg"
+    }
+   ],
+   "dimensi": "11 × 24 × 30 cm",
+   "description": "Ransel Alyssa tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Ransel-Alyssa-Moqyta-Momoqy-i.323104309.43760442126?extraParams=%7B%22display_model_id%22%3A285877880264%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-7ra0t-mcnckvdldfzr48"
+  }
+ ],
+ "selempang": [
+  {
+   "id": "selempang-holiday",
+   "name": "Selempang Holiday",
+   "category": "Selempang",
+   "tag": "",
+   "price": 255000,
+   "sizes": [
+    "Tebal 17 × Lebar 43 × Tinggi 32 cm"
+   ],
+   "colors": [
+    {
+     "name": "Army",
+     "hex": "#5A6B3E",
+     "image": "foto-product/selempang/holiday-army.jpg"
+    },
+    {
+     "name": "Mocca",
+     "hex": "#8A6A55",
+     "image": "foto-product/selempang/holiday-mocca.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#F2A7C3",
+     "image": "foto-product/selempang/holiday-pink.jpg"
+    }
+   ],
+   "dimensi": "17 × 43 × 32 cm",
+   "description": "Selempang Holiday tersedia dalam 3 pilihan warna."
+  },
+  {
+   "id": "selempang-celia",
+   "name": "Selempang Celia",
+   "category": "Selempang",
+   "tag": "",
+   "price": 170000,
+   "sizes": [
+    "Tebal 10 × Lebar 18,5 × Tinggi 22 cm"
+   ],
+   "colors": [
+    {
+     "name": "Army",
+     "hex": "#5A6B3E",
+     "image": "foto-product/selempang/celia-army.jpg"
+    },
+    {
+     "name": "Bata",
+     "hex": "#A4472C",
+     "image": "foto-product/selempang/celia-bata.jpg"
+    },
+    {
+     "name": "Beige",
+     "hex": "#D8C7A8",
+     "image": "foto-product/selempang/celia-beige.jpg"
+    },
+    {
+     "name": "Blue",
+     "hex": "#4A77B4",
+     "image": "foto-product/selempang/celia-blue.jpg"
+    }
+   ],
+   "dimensi": "10 × 18.5 × 22 cm",
+   "description": "Selempang Celia tersedia dalam 4 pilihan warna."
+  },
+  {
+   "id": "selempang-kazumi",
+   "name": "Selempang Kazumi",
+   "category": "Selempang",
+   "tag": "",
+   "price": 210000,
+   "sizes": [
+    "Tebal 9 × Lebar 30 × Tinggi 32 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/selempang/kazumi-black.jpg"
+    },
+    {
+     "name": "Cream",
+     "hex": "#F1E8D2",
+     "image": "foto-product/selempang/kazumi-cream.jpg"
+    },
+    {
+     "name": "Grey",
+     "hex": "#9B9B9B",
+     "image": "foto-product/selempang/kazumi-grey.jpg"
+    }
+   ],
+   "dimensi": "9 × 30 × 32 cm",
+   "description": "Selempang Kazumi tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Totebag-Kazumi-Momoqy-Moqyta-i.323104309.51310959120?extraParams=%7B%22display_model_id%22%3A320956986872%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-822wh-mojpw4lib7da26"
+  },
+  {
+   "id": "selempang-naraya",
+   "name": "Selempang Naraya",
+   "category": "Selempang",
+   "tag": "",
+   "price": 180000,
+   "sizes": [
+    "Tebal 10 × Lebar 23 × Tinggi 19 cm"
+   ],
+   "colors": [
+    {
+     "name": "Bata",
+     "hex": "#A4472C",
+     "image": "foto-product/selempang/naraya-bata.jpg"
+    },
+    {
+     "name": "Lilac",
+     "hex": "#C3A6D8",
+     "image": "foto-product/selempang/naraya-lilac.jpg"
+    },
+    {
+     "name": "Tosca",
+     "hex": "#3AB5A8",
+     "image": "foto-product/selempang/naraya-tosca.jpg"
+    }
+   ],
+   "dimensi": "10 × 23 × 19 cm",
+   "description": "Selempang Naraya tersedia dalam 3 pilihan warna.",
+   "shopee": "https://shopee.co.id/Slempang-Naraya-Moqyta-Momoqy.-i.323104309.44903385570?extraParams=%7B%22display_model_id%22%3A415323097721%2C%22model_selection_logic%22%3A3%7D&image_ids=id-11134207-82252-migswlatid4z32"
+  }
+ ],
+ "totebag": [
+  {
+   "id": "totebag-calista",
+   "name": "Tote Bag Calista",
+   "category": "Tote Bag",
+   "tag": "",
+   "price": 185000,
+   "sizes": [
+    "Tebal 10 × Lebar 35 × Tinggi 39 cm"
+   ],
+   "colors": [
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/totebag/calista-black.jpg"
+    },
+    {
+     "name": "Blue",
+     "hex": "#4A77B4",
+     "image": "foto-product/totebag/calista-blue.jpg"
+    },
+    {
+     "name": "Pink",
+     "hex": "#F2A7C3",
+     "image": "foto-product/totebag/calista-pink.jpg"
+    },
+    {
+     "name": "Sage",
+     "hex": "#9CAF88",
+     "image": "foto-product/totebag/calista-sage.jpg"
+    }
+   ],
+   "dimensi": "10 × 35 × 39 cm",
+   "description": "Tote Bag Calista tersedia dalam 4 pilihan warna."
+  },
+  {
+   "id": "totebag-aida",
+   "name": "Tote Bag Aida",
+   "category": "Tote Bag",
+   "tag": "",
+   "price": 180000,
+   "sizes": [
+    "Tebal 11 × Lebar 28 × Tinggi 30 cm"
+   ],
+   "colors": [
+    {
+     "name": "Lavender",
+     "hex": "#B9A6E0",
+     "image": "foto-product/totebag/aida-lavender.jpg"
+    },
+    {
+     "name": "Mustard",
+     "hex": "#D9A520",
+     "image": "foto-product/totebag/aida-mustard.jpg"
+    },
+    {
+     "name": "White",
+     "hex": "#FFFFFF",
+     "image": "foto-product/totebag/aida-white.jpg"
+    }
+   ],
+   "dimensi": "11 × 28 × 30 cm",
+   "description": "Tote Bag Aida tersedia dalam 3 pilihan warna."
+  },
+  {
+   "id": "totebag-lunea",
+   "name": "Tote Bag Lunea",
+   "category": "Tote Bag",
+   "tag": "",
+   "price": 150000,
+   "sizes": [
+    "Tebal 8 × Lebar 24 × Tinggi 30 cm"
+   ],
+   "colors": [
+    {
+     "name": "Bata",
+     "hex": "#A4472C",
+     "image": "foto-product/totebag/lunea-bata.jpg"
+    },
+    {
+     "name": "Black",
+     "hex": "#1A1A1A",
+     "image": "foto-product/totebag/lunea-black.jpg"
+    },
+    {
+     "name": "Milo",
+     "hex": "#7A5C43",
+     "image": "foto-product/totebag/lunea-milo.jpg"
+    }
+   ],
+   "dimensi": "8 × 24 × 30 cm",
+   "description": "Tote Bag Lunea tersedia dalam 3 pilihan warna."
+  }
+ ]
+};
+        Object.values(PRODUCTS).forEach(list => list.forEach(p => p.images = p.colors.map(c => c.image)));
+
+        const SHOPEE_URL = 'https://shopee.co.id/shop/323104309';
+        const MORE_LABEL = { ransel: 'Ransel', totebag: 'Tote Bag', selempang: 'Selempang' };
+        const shown = { ransel: 4, totebag: 4, selempang: 4 };
+
+        function toggleMore(k) {
+            const total = PRODUCTS[k].length;
+            if (shown[k] >= total) {
+                shown[k] = 4;
+                document.getElementById(k).scrollIntoView({ behavior: 'smooth' });
+            } else shown[k] = Math.min(shown[k] + 8, total);
+            renderCatalogSection(k, 'grid-' + k, 'aspect-[3/4]');
+        }
+
+        // SEARCH
+        function closeSearch() { document.getElementById('search-panel').classList.add('hidden'); }
+        function runSearch() {
+            const q = document.getElementById('search-input').value.trim().toLowerCase();
+            const box = document.getElementById('search-results');
+            if (!q) { box.innerHTML = '<p class="text-xs text-charcoal-800/60 py-4">Ketik nama produk, kategori, atau warna.</p>'; return; }
+            const hits = [];
+            for (const k in PRODUCTS) PRODUCTS[k].forEach(p => {
+                const hay = (p.name + ' ' + k + ' ' + p.category + ' ' + p.colors.map(c => c.name).join(' ')).toLowerCase();
+                if (hay.includes(q)) hits.push({ k, p });
+            });
+            box.innerHTML = hits.length ? hits.slice(0, 10).map(({ k, p }) => `
+                <button data-k="${k}" data-id="${p.id}" class="search-hit w-full flex items-center gap-4 py-3 text-left hover:bg-plum-50 transition-colors px-2">
+                    <img src="${p.images[0]}" alt="" class="w-12 aspect-[3/4] object-cover bg-cream-100">
+                    <span class="flex-1"><span class="block text-sm font-semibold text-charcoal-900">${p.name}</span><span class="block text-[10px] uppercase tracking-widest text-plum-600">${p.category}</span></span>
+                    <span class="text-sm font-bold">${formatRupiah(p.price)}</span>
+                </button>`).join('') + (hits.length > 10 ? `<p class="text-[11px] text-charcoal-800/60 py-3">+${hits.length - 10} produk lainnya, perjelas kata kunci.</p>` : '')
+                : '<p class="text-sm text-charcoal-800/70 py-4">Produk tidak ditemukan.</p>';
+        }
+
+        function waMessage(items) {
+            const total = items.reduce((a, i) => a + i.price, 0);
+            const body = items.map(i => `*${i.name}*\nWarna: ${i.color}\nJumlah: ${i.qty}\nHarga: ${formatRupiah(i.price)}`).join('\n\n');
+            return `Halo MOQYTA, saya ingin memesan:\n\n${body}\n\n*Total: ${formatRupiah(total)}*\n\nTerima kasih.`;
+        }
+        function orderText() {
+            const sel = cart.filter(i => i.selected);
+            const items = sel.map((i, n) => `${n + 1}. ${i.product.name} | ${i.color} | ${i.quantity}x`).join('\n');
+            return 'Pesanan Moqyta:\n' + items + '\nTotal: ' + formatRupiah(sel.reduce((a, i) => a + i.product.price * i.quantity, 0));
+        }
+        function goShopee(text, url) {
+            window.open(url || SHOPEE_URL, '_blank');
+            try { navigator.clipboard.writeText(text); } catch (e) {}
+            showToast('Rincian pesanan disalin. Cari produknya di toko Shopee Moqyta.');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sp = document.getElementById('search-panel'), si = document.getElementById('search-input');
+            document.getElementById('search-btn').addEventListener('click', () => {
+                sp.classList.toggle('hidden');
+                if (!sp.classList.contains('hidden')) { si.focus(); runSearch(); }
+            });
+            document.getElementById('search-close').addEventListener('click', closeSearch);
+            si.addEventListener('input', runSearch);
+            si.addEventListener('keydown', e => { if (e.key === 'Enter') { const h = document.querySelector('.search-hit'); if (h) h.click(); } });
+            document.getElementById('search-results').addEventListener('click', e => {
+                const b = e.target.closest('.search-hit'); if (!b) return;
+                closeSearch(); openProductModal(b.dataset.k, b.dataset.id);
+            });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSearch(); });
+            document.getElementById('modal-shopee-buy').addEventListener('click', () => {
+                if (!currentActiveProduct) return;
+                goShopee(`Saya mau beli: ${currentActiveProduct.name} | ${selectedColor.name} | ${selectedQuantity}x`, currentActiveProduct.shopee);
+            });
+            document.getElementById('cart-checkout-shopee').addEventListener('click', () => {
+                if (!selectedItems().length) { showToast(cart.length ? 'Pilih minimal satu produk untuk checkout.' : 'Keranjang Anda masih kosong!'); return; }
+                goShopee(orderText());
+            });
+        });
+
+        // ROUTING HALAMAN KATEGORI
+        let currentCat = null;
+        function goBack() { location.hash = currentCat ? '#' + currentCat : '#beranda'; }
+        function route() {
+            const h = location.hash, m = h.match(/^#\/kategori\/(\w+)/);
+            const home = ['beranda', 'highlights', 'ransel', 'totebag', 'selempang'].map(id => document.getElementById(id));
+            const page = document.getElementById('category-page');
+            if (m && PRODUCTS[m[1]]) {
+                const k = m[1]; currentCat = k;
+                home.forEach(el => el.classList.add('hidden'));
+                page.classList.remove('hidden');
+                const eb = document.querySelector('#' + k + ' span.uppercase'); document.getElementById('cat-eyebrow').textContent = eb ? eb.textContent : '';
+                document.getElementById('cat-title').textContent = document.querySelector('#' + k + ' h2').textContent;
+                renderCatalogSection(k, 'grid-cat', 'aspect-[3/4]', PRODUCTS[k].length);
+                window.scrollTo(0, 0);
+            } else {
+                page.classList.add('hidden');
+                home.forEach(el => el.classList.remove('hidden'));
+                const el = h.length > 1 && !h.startsWith('#/') ? document.getElementById(h.slice(1)) : null;
+                if (el) setTimeout(() => el.scrollIntoView(), 0);
+            }
+        }
+        window.addEventListener('hashchange', route);
+        document.addEventListener('DOMContentLoaded', route);
+
+        // NAVIGASI ANTAR PRODUK DI POPUP
+        function navModal(dir) {
+            if (!modalCategory || !currentActiveProduct) return;
+            const list = PRODUCTS[modalCategory];
+            const i = list.indexOf(currentActiveProduct);
+            openProductModal(modalCategory, list[(i + dir + list.length) % list.length].id);
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('modal-prev').addEventListener('click', () => navModal(-1));
+            document.getElementById('modal-next').addEventListener('click', () => navModal(1));
+            document.addEventListener('keydown', e => {
+                if (document.getElementById('product-modal').classList.contains('hidden')) return;
+                if (e.key === 'ArrowLeft') navModal(-1);
+                if (e.key === 'ArrowRight') navModal(1);
+            });
+        });
+
+        // ANIMASI TERBANG KE IKON KERANJANG
+        function flyToCart(srcEl) {
+            const cartBtn = document.getElementById('cart-btn');
+            const a = srcEl.getBoundingClientRect(), t = cartBtn.getBoundingClientRect();
+            const f = document.createElement('img');
+            f.src = srcEl.src;
+            f.style.cssText = `position:fixed;z-index:9999;left:${a.left}px;top:${a.top}px;width:${a.width}px;height:${a.height}px;object-fit:cover;pointer-events:none;box-shadow:0 12px 30px rgba(0,0,0,.3);transition:all .85s cubic-bezier(.55,-.15,.75,.45);`;
+            document.body.appendChild(f);
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                f.style.left = (t.left + t.width / 2 - 16) + 'px';
+                f.style.top = (t.top + t.height / 2 - 16) + 'px';
+                f.style.width = '32px'; f.style.height = '32px';
+                f.style.borderRadius = '50%'; f.style.opacity = '.5';
+            }));
+            setTimeout(() => {
+                f.remove();
+                cartBtn.classList.add('cart-bump');
+                setTimeout(() => cartBtn.classList.remove('cart-bump'), 500);
+            }, 880);
+        }
+
+        let currentActiveProduct = null;
+        let selectedColor = null;
+        let selectedSize = null;
+        let selectedQuantity = 1;
+        let modalCategory = null;
+        let cart = [];
+
+        // FORMATTER HARGA CURRENCY
+        function formatRupiah(amount) {
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        // INITIALIZE APP ON LOAD
+        document.addEventListener('DOMContentLoaded', () => {
+            ['ransel', 'totebag', 'selempang'].forEach(k => renderCatalogSection(k, 'grid-' + k, 'aspect-[3/4]'));
+            setupEventListeners();
+        });
+
+        // RENDER PRODUCTS GRID
+        function renderCatalogSection(categoryKey, containerId, imageAspectRatioClass, limit = shown[categoryKey]) {
+            const container = document.getElementById(containerId);
+            const all = PRODUCTS[categoryKey];
+            if (!container || !all) return;
+            const items = all.slice(0, limit);
+            const cnt = document.getElementById(categoryKey + '-count');
+            if (cnt) cnt.textContent = items.length + ' dari ' + all.length;
+            const lbl = document.getElementById('more-' + categoryKey + '-label');
+            if (lbl) lbl.textContent = shown[categoryKey] >= all.length ? 'Tampilkan Lebih Sedikit' : 'Lihat Produk ' + MORE_LABEL[categoryKey] + ' Lainnya (' + (all.length - shown[categoryKey]) + ' lagi)';
+
+            const moreLink = document.querySelector('a[href="#/kategori/' + categoryKey + '"]');
+            if (moreLink) moreLink.style.display = all.length ? '' : 'none';
+            if (!all.length) {
+                container.innerHTML = '<div class="col-span-full text-center py-16 border border-dashed border-cream-200 text-charcoal-800/60"><p class="font-serif text-xl">Koleksi segera hadir</p><p class="text-xs uppercase tracking-widest mt-2">Pantau terus Moqyta</p></div>';
+                return;
+            }
+            container.innerHTML = items.map(product => {
+                const img1 = product.images[0];
+                const img2 = product.images[1] || product.images[0];
+
+                return `
+                    <div class="group bg-white overflow-hidden shadow-xs hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+                        <div>
+                            <!-- Multi-photo Card Image Showcase -->
+                            <div class="relative ${imageAspectRatioClass} w-full overflow-hidden bg-cream-100 cursor-pointer" onclick="openProductModal('${categoryKey}', '${product.id}')">
+                                <img src="${img1}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-700">
+                                <img src="${img2}" alt="${product.name} detail" class="w-full h-full object-cover bg-cream-100 absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                
+                                ${product.tag ? `<span class="absolute top-3 left-3 bg-charcoal-900 text-white text-[9px] uppercase tracking-widest px-2.5 py-1 font-semibold">${product.tag}</span>` : ''}
+
+                                <div class="absolute inset-0 bg-charcoal-900/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-4">
+                                    <button class="w-full bg-cream-50/95 hover:bg-plum-600 hover:text-white text-charcoal-900 text-xs font-semibold uppercase tracking-widest py-3 transition-colors shadow-md">
+                                        Lihat Detail
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Card Info -->
+                            <div class="p-5 text-center">
+                                <span class="text-[10px] uppercase font-semibold tracking-widest text-plum-600">${product.category}</span>
+                                <h3 class="font-serif text-base text-charcoal-900 font-semibold mt-1 group-hover:text-plum-600 transition-colors line-clamp-1 cursor-pointer" onclick="openProductModal('${categoryKey}', '${product.id}')">
+                                    ${product.name}
+                                </h3>
+                                <p class="text-sm font-bold text-charcoal-900 mt-2">${formatRupiah(product.price)}</p>
+                                <div class="flex justify-center items-center gap-2 mt-3">
+                                    ${product.colors.map((col, ci) => `<button onclick="openProductModal('${categoryKey}', '${product.id}', ${ci})" title="${col.name}" aria-label="${col.name}" class="w-5 h-5 rounded-full border border-charcoal-900/20 hover:scale-125 transition-transform" style="background-color:${col.hex}"></button>`).join('')}
+                                    <span class="text-[10px] text-charcoal-800/60 ml-1">${product.colors.length} warna</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-5 pb-5 pt-0">
+                            <button onclick="openProductModal('${categoryKey}', '${product.id}')" class="w-full border border-charcoal-900 hover:bg-charcoal-900 hover:text-white text-charcoal-900 text-[11px] uppercase font-semibold tracking-widest py-2.5 transition-all">
+                                Pilih Ukuran & Beli
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // OPEN PRODUCT MODAL
+        function openProductModal(categoryKey, productId, colorIdx = 0) {
+            const product = PRODUCTS[categoryKey].find(p => p.id === productId);
+            if (!product) return;
+
+            currentActiveProduct = product;
+            modalCategory = categoryKey;
+            selectedColor = product.colors[colorIdx] || product.colors[0];
+            selectedSize = product.sizes[0];
+            selectedQuantity = 1;
+
+            // Fill text fields
+            document.getElementById('modal-category').innerText = product.category;
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-price').innerText = formatRupiah(product.price);
+            document.getElementById('modal-desc').innerText = product.description;
+                        document.getElementById('qty-val').innerText = selectedQuantity;
+
+            // Setup Main Image
+            const mainImg = document.getElementById('modal-main-img');
+            mainImg.src = selectedColor.image || product.images[0];
+
+            // Setup Thumbnails (Multi-Photo System)
+            const thumbnailsContainer = document.getElementById('modal-thumbnails');
+            thumbnailsContainer.innerHTML = product.images.map((imgUrl, index) => `
+                <button onclick="document.querySelectorAll('.color-btn')[${index}].click()" class="aspect-[3/4] w-14 shrink-0 border-2 ${index === colorIdx ? 'border-plum-600' : 'border-transparent'} overflow-hidden hover:opacity-100 transition-all thumb-btn">
+                    <img src="${imgUrl}" class="w-full h-full object-cover bg-cream-100">
+                </button>
+            `).join('');
+
+            // Render Color Swatches
+            const colorsContainer = document.getElementById('modal-colors');
+            document.getElementById('selected-color-label').innerText = selectedColor.name;
+            colorsContainer.innerHTML = product.colors.map((col, idx) => `
+                <button onclick="selectColor('${col.name}', '${col.hex}', this)" class="w-7 h-7 rounded-full border-2 ${idx === colorIdx ? 'border-plum-600 scale-110' : 'border-cream-200'} p-0.5 transition-all color-btn" title="${col.name}">
+                    <span class="block w-full h-full rounded-full" style="background-color: ${col.hex}"></span>
+                </button>
+            `).join('');
+
+            // Render Size Buttons
+            const sizesContainer = document.getElementById('modal-sizes');
+            sizesContainer.innerHTML = product.sizes.map(sz => `<span class="px-3.5 py-1.5 text-xs font-medium border border-plum-600 bg-plum-600 text-white">${sz}</span>`).join('');
+
+            // Show Modal
+            document.getElementById('product-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // prevent scroll
+        }
+
+        // SWITCH MODAL MAIN IMAGE VIA THUMBNAILS
+        function switchModalImage(imgUrl, btn) {
+            document.getElementById('modal-main-img').src = imgUrl;
+            document.querySelectorAll('.thumb-btn').forEach(b => b.classList.replace('border-plum-600', 'border-transparent'));
+            btn.classList.replace('border-transparent', 'border-plum-600');
+        }
+
+        // SELECT COLOR
+        function selectColor(colorName, colorHex, btn) {
+            const col = currentActiveProduct.colors.find(c => c.name === colorName);
+            selectedColor = col || { name: colorName, hex: colorHex };
+            if (col) {
+                document.getElementById('modal-main-img').src = col.image;
+                const ci = currentActiveProduct.colors.indexOf(col);
+                document.querySelectorAll('.thumb-btn').forEach((b, i) => { b.classList.toggle('border-plum-600', i === ci); b.classList.toggle('border-transparent', i !== ci); });
+            }
+            document.getElementById('selected-color-label').innerText = colorName;
+            document.querySelectorAll('.color-btn').forEach(b => {
+                b.classList.remove('border-plum-600', 'scale-110');
+                b.classList.add('border-cream-200');
+            });
+            btn.classList.remove('border-cream-200');
+            btn.classList.add('border-plum-600', 'scale-110');
+        }
+
+        // SELECT SIZE
+        function selectSize(size, btn) {
+            selectedSize = size;
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('border-plum-600', 'bg-plum-600', 'text-white');
+                b.classList.add('border-cream-200', 'text-charcoal-800');
+            });
+            btn.classList.remove('border-cream-200', 'text-charcoal-800');
+            btn.classList.add('border-plum-600', 'bg-plum-600', 'text-white');
+        }
+
+        // SETUP EVENT LISTENERS
+        function setupEventListeners() {
+            // Close Product Modal
+            document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+            document.getElementById('product-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'product-modal') closeModal();
+            });
+
+            // Quantity Pickers
+            document.getElementById('qty-minus').addEventListener('click', () => {
+                if (selectedQuantity > 1) {
+                    selectedQuantity--;
+                    document.getElementById('qty-val').innerText = selectedQuantity;
+                }
+            });
+            document.getElementById('qty-plus').addEventListener('click', () => {
+                selectedQuantity++;
+                document.getElementById('qty-val').innerText = selectedQuantity;
+            });
+
+            // Add to Cart from Modal
+            document.getElementById('modal-add-cart').addEventListener('click', () => {
+                if (!currentActiveProduct) return;
+                addToCart(currentActiveProduct, selectedColor.name, selectedSize, selectedQuantity);
+                flyToCart(document.getElementById('modal-main-img'));
+                showToast(`"${currentActiveProduct.name}" ditambahkan ke keranjang!`);
+            });
+
+            // Buy Direct via WhatsApp from Modal
+            document.getElementById('modal-wa-buy').addEventListener('click', () => {
+                if (!currentActiveProduct) return;
+                const message = waMessage([{ name: currentActiveProduct.name, color: selectedColor.name, qty: selectedQuantity, price: currentActiveProduct.price * selectedQuantity }]);
+                window.open(`https://wa.me/6281327108030?text=${encodeURIComponent(message)}`, '_blank');
+            });
+
+            // Cart Drawer Controls
+            document.getElementById('cart-btn').addEventListener('click', openCart);
+            document.getElementById('close-cart-btn').addEventListener('click', closeCart);
+            document.getElementById('cart-backdrop').addEventListener('click', closeCart);
+
+            // Checkout via WA from Cart Drawer
+            document.getElementById('cart-checkout-wa').addEventListener('click', () => {
+                const sel = selectedItems();
+                if (sel.length === 0) {
+                    showToast(cart.length ? 'Pilih minimal satu produk untuk checkout.' : 'Keranjang Anda masih kosong!');
+                    return;
+                }
+                const message = waMessage(sel.map(i => ({ name: i.product.name, color: i.color, qty: i.quantity, price: i.product.price * i.quantity })));
+                window.open(`https://wa.me/6281327108030?text=${encodeURIComponent(message)}`, '_blank');
+            });
+
+            // Mobile menu toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // CART MANAGEMENT
+        function addToCart(product, color, size, quantity) {
+            const existingIndex = cart.findIndex(item => item.product.id === product.id && item.color === color && item.size === size);
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push({ product, color, size, quantity, selected: false });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Update total count badge
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = totalCount;
+
+            // Render Drawer Items
+            const container = document.getElementById('cart-items-container');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-charcoal-800/50">
+                        <i class="fas fa-shopping-bag text-4xl mb-3 text-cream-200"></i>
+                        <p class="text-xs uppercase tracking-widest font-semibold">Keranjang Anda Masih Kosong</p>
+                    </div>
+                `;
+            } else {
+                const allSel = cart.every(i => i.selected);
+                container.innerHTML = `
+                    <label class="flex items-center gap-3 pb-3 border-b border-cream-200 text-xs font-semibold uppercase tracking-widest text-charcoal-900 cursor-pointer">
+                        <input type="checkbox" ${allSel ? 'checked' : ''} onchange="toggleSelectAll(this.checked)" class="w-4 h-4 accent-plum-600">
+                        Pilih Semua (${cart.filter(i => i.selected).length}/${cart.length})
+                    </label>` + cart.map((item, index) => `
+                    <div class="flex items-center space-x-3 border-b border-cream-200 pb-4">
+                        <input type="checkbox" ${item.selected ? 'checked' : ''} onchange="toggleSelect(${index})" aria-label="Pilih ${item.product.name}" class="w-4 h-4 accent-plum-600 shrink-0">
+                        <img src="${(item.product.colors.find(c => c.name === item.color) || {}).image || item.product.images[0]}" class="w-16 aspect-[3/4] object-cover bg-cream-100">
+                        <div class="flex-1">
+                            <h4 class="font-serif text-sm font-semibold text-charcoal-900 line-clamp-1">${item.product.name}</h4>
+                            <p class="text-[11px] text-charcoal-800/60 mt-0.5">Ukuran: ${item.size} | Warna: ${item.color}</p>
+                            <p class="text-xs font-bold text-plum-700 mt-1">${formatRupiah(item.product.price)} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-charcoal-800/40 hover:text-red-600 p-2 text-xs">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            // Calculate subtotal
+            const subtotal = cart.filter(i => i.selected).reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+            document.getElementById('cart-subtotal').innerText = formatRupiah(subtotal);
+        }
+
+        function toggleSelect(i) { cart[i].selected = !cart[i].selected; updateCartUI(); }
+        function toggleSelectAll(v) { cart.forEach(i => i.selected = v); updateCartUI(); }
+        function selectedItems() { return cart.filter(i => i.selected); }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function openCart() {
+            document.getElementById('cart-drawer').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            document.getElementById('cart-drawer').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // SHOW TOAST NOTIFICATION
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+    </script>
+</body>
+</html>
