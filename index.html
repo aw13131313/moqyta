@@ -220,8 +220,7 @@
         </div>
     </section>
 
-    <!-- Section Filosofi Brand -->
-        <!-- HALAMAN KATEGORI (semua produk) -->
+    <!-- HALAMAN KATEGORI (semua produk) -->
     <section id="category-page" class="hidden py-12 bg-white min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <button onclick="goBack()" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-plum-600 hover:text-plum-700 mb-8">
@@ -238,6 +237,7 @@
         </div>
     </section>
 
+    <!-- Section Filosofi Brand -->
     <section id="tentang" class="py-20 bg-charcoal-900 text-cream-100">
         <div class="max-w-5xl mx-auto px-4 text-center space-y-6">
             <span class="text-xs uppercase tracking-[0.3em] text-plum-500 font-semibold">Tentang Moqyta</span>
@@ -322,16 +322,16 @@
             </button>
 
             <!-- Left Side: Interactive Multi-Photo Gallery -->
-            <div class="w-full md:w-1/2 p-3 md:p-6 bg-cream-100/50 flex flex-col justify-between">
+            <div class="w-full md:w-1/2 p-3 md:p-6 bg-cream-100/50 flex flex-col md:justify-between">
                 <!-- Main Large Image Preview -->
-                <div class="relative aspect-[3/4] h-[34vh] w-auto md:h-[64vh] md:max-h-[620px] mx-auto shrink-0 overflow-hidden bg-cream-200 mb-2 md:mb-4 shadow-sm">
+                <div class="relative aspect-[3/4] h-[46vh] w-auto md:h-[64vh] md:max-h-[620px] mx-auto shrink-0 overflow-hidden bg-cream-200 mb-2 md:mb-4 shadow-sm">
                     <img id="modal-main-img" src="" alt="Main Preview" class="w-full h-full object-cover transition-all duration-300">
                 </div>
 
                 <!-- Thumbnails Bar (Multi-Photo Picker) -->
-                <div>
+                <div class="hidden md:block">
                     <span class="text-[10px] uppercase font-semibold text-charcoal-800/60 tracking-widest mb-2 hidden md:block">Sudut Foto (Klik untuk melihat):</span>
-                    <div id="modal-thumbnails" class="flex gap-2 justify-center md:justify-start">
+                    <div id="modal-thumbnails" class="flex gap-2 justify-center md:justify-start overflow-x-auto pb-1 mt-1 md:mt-0">
                         <!-- Rendered dynamically -->
                     </div>
                 </div>
@@ -340,7 +340,9 @@
             <!-- Right Side: Product Details & Controls -->
             <div class="w-full md:w-1/2 p-4 md:p-8 flex flex-col justify-between md:overflow-y-auto md:max-h-[600px]">
                 
-                <div class="space-y-3 md:space-y-5">
+                <div class="flex flex-col gap-3 md:gap-5">
+                    <!-- Thumbnail khusus HP: di atas tulisan kategori -->
+                    <div id="modal-thumbnails-m" class="md:hidden flex gap-2 overflow-x-auto pb-1"></div>
                     <div>
                         <span id="modal-category" class="text-xs uppercase font-semibold tracking-widest text-plum-600">Tas</span>
                         <h2 id="modal-title" class="font-serif text-2xl md:text-3xl font-normal text-charcoal-900 mt-1">Nama Produk</h2>
@@ -385,16 +387,16 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                        <button id="modal-add-cart" class="w-full bg-plum-600 hover:bg-plum-700 text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                    <div class="grid grid-cols-3 sm:grid-cols-2 gap-2 sm:gap-3 pt-2">
+                        <button id="modal-add-cart" class="w-full bg-plum-600 hover:bg-plum-700 text-white py-2.5 sm:py-3.5 text-[9px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-widest transition-colors flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0 sm:space-x-2">
                             <i class="fas fa-shopping-bag"></i>
-                            <span>+ Keranjang</span>
+                            <span>Keranjang</span>
                         </button>
-                        <button id="modal-wa-buy" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                        <button id="modal-wa-buy" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-2.5 sm:py-3.5 text-[9px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-widest transition-colors flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0 sm:space-x-2">
                             <i class="fab fa-whatsapp text-sm"></i>
                             <span>Beli via WA</span>
                         </button>
-                        <button id="modal-shopee-buy" class="sm:col-span-2 w-full bg-[#ee4d2d] hover:bg-[#d73f22] text-white py-3.5 text-xs font-semibold uppercase tracking-widest transition-colors flex items-center justify-center space-x-2">
+                        <button id="modal-shopee-buy" class="col-span-1 sm:col-span-2 w-full bg-[#ee4d2d] hover:bg-[#d73f22] text-white py-2.5 sm:py-3.5 text-[9px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-widest transition-colors flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-0 sm:space-x-2">
                             <i class="fas fa-bag-shopping text-sm"></i>
                             <span>Beli via Shopee</span>
                         </button>
@@ -456,8 +458,6 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // DATA KATALOG PRODUK MOQYTA DENGAN MULTI-FOTO
-        // DATA PRODUK. Foto per warna ada di folder foto-product/. Harga masih contoh (199000), ganti sesuai harga asli.
         // DATA PRODUK. Foto per warna ada di folder foto-product/.
         const PRODUCTS = {
  "ransel": [
@@ -467,25 +467,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 245000,
-   "sizes": [
-    "Tebal 13 × Lebar 25 × Tinggi 37 cm"
-   ],
+   "sizes": ["Tebal 13 × Lebar 25 × Tinggi 37 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/ivonie-black.jpg"
-    },
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/ivonie-grey.jpg"
-    },
-    {
-     "name": "Khaki",
-     "hex": "#BFA97F",
-     "image": "foto-product/ransel/ivonie-khaki.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/ivonie-black.jpg" },
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/ivonie-grey.jpg" },
+    { "name": "Khaki", "hex": "#BFA97F", "image": "foto-product/ransel/ivonie-khaki.jpg" }
    ],
    "dimensi": "13 × 25 × 37 cm",
    "description": "Ransel Ivonie tersedia dalam 3 pilihan warna."
@@ -496,25 +482,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 255000,
-   "sizes": [
-    "Tebal 14,5 × Lebar 28 × Tinggi 44 cm"
-   ],
+   "sizes": ["Tebal 14,5 × Lebar 28 × Tinggi 44 cm"],
    "colors": [
-    {
-     "name": "Army",
-     "hex": "#5A6B3E",
-     "image": "foto-product/ransel/audrey-army.jpg"
-    },
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/audrey-grey.jpg"
-    },
-    {
-     "name": "Khaki",
-     "hex": "#BFA97F",
-     "image": "foto-product/ransel/audrey-khaki.jpg"
-    }
+    { "name": "Army", "hex": "#5A6B3E", "image": "foto-product/ransel/audrey-army.jpg" },
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/audrey-grey.jpg" },
+    { "name": "Khaki", "hex": "#BFA97F", "image": "foto-product/ransel/audrey-khaki.jpg" }
    ],
    "dimensi": "14.5 × 28 × 44 cm",
    "description": "Ransel Audrey tersedia dalam 3 pilihan warna."
@@ -525,30 +497,12 @@
    "category": "Ransel",
    "tag": "",
    "price": 265000,
-   "sizes": [
-    "Tebal 13 × Lebar 26,5 × Tinggi 39,5 cm"
-   ],
+   "sizes": ["Tebal 13 × Lebar 26,5 × Tinggi 39,5 cm"],
    "colors": [
-    {
-     "name": "Bata",
-     "hex": "#A4472C",
-     "image": "foto-product/ransel/vio-bata.jpg"
-    },
-    {
-     "name": "Emerald",
-     "hex": "#1E7F5C",
-     "image": "foto-product/ransel/vio-emerald.jpg"
-    },
-    {
-     "name": "Khaki",
-     "hex": "#BFA97F",
-     "image": "foto-product/ransel/vio-khaki.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/vio-tosca.jpg"
-    }
+    { "name": "Bata", "hex": "#A4472C", "image": "foto-product/ransel/vio-bata.jpg" },
+    { "name": "Emerald", "hex": "#1E7F5C", "image": "foto-product/ransel/vio-emerald.jpg" },
+    { "name": "Khaki", "hex": "#BFA97F", "image": "foto-product/ransel/vio-khaki.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/vio-tosca.jpg" }
    ],
    "dimensi": "13 × 26.5 × 39.5 cm",
    "description": "Ransel Vio tersedia dalam 4 pilihan warna.",
@@ -560,25 +514,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 220000,
-   "sizes": [
-    "Tebal 12 × Lebar 28 × Tinggi 43 cm"
-   ],
+   "sizes": ["Tebal 12 × Lebar 28 × Tinggi 43 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/khanza-black.jpg"
-    },
-    {
-     "name": "Blue",
-     "hex": "#4A77B4",
-     "image": "foto-product/ransel/khanza-blue.jpg"
-    },
-    {
-     "name": "Cream",
-     "hex": "#F1E8D2",
-     "image": "foto-product/ransel/khanza-krem.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/khanza-black.jpg" },
+    { "name": "Blue", "hex": "#4A77B4", "image": "foto-product/ransel/khanza-blue.jpg" },
+    { "name": "Cream", "hex": "#F1E8D2", "image": "foto-product/ransel/khanza-krem.jpg" }
    ],
    "dimensi": "12 × 28 × 43 cm",
    "description": "Ransel Khanza tersedia dalam 3 pilihan warna.",
@@ -590,30 +530,12 @@
    "category": "Ransel",
    "tag": "",
    "price": 210000,
-   "sizes": [
-    "Tebal 13 × Lebar 28 × Tinggi 40 cm"
-   ],
+   "sizes": ["Tebal 13 × Lebar 28 × Tinggi 40 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/florie-black.jpg"
-    },
-    {
-     "name": "Cream",
-     "hex": "#F1E8D2",
-     "image": "foto-product/ransel/florie-cream.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/florie-salem.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/florie-tosca.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/florie-black.jpg" },
+    { "name": "Cream", "hex": "#F1E8D2", "image": "foto-product/ransel/florie-cream.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/florie-salem.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/florie-tosca.jpg" }
    ],
    "dimensi": "13 × 28 × 40 cm",
    "description": "Ransel Florie tersedia dalam 4 pilihan warna.",
@@ -625,25 +547,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 210000,
-   "sizes": [
-    "Tebal 11 × Lebar 25 × Tinggi 34 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 25 × Tinggi 34 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/tamara-black.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/tamara-lilac.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/tamara-tosca.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/tamara-black.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/tamara-lilac.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/tamara-tosca.jpg" }
    ],
    "dimensi": "11 × 25 × 34 cm",
    "description": "Ransel Tamara tersedia dalam 3 pilihan warna.",
@@ -655,15 +563,9 @@
    "category": "Ransel",
    "tag": "",
    "price": 260000,
-   "sizes": [
-    "Tebal 12 × Lebar 29 × Tinggi 36 cm"
-   ],
+   "sizes": ["Tebal 12 × Lebar 29 × Tinggi 36 cm"],
    "colors": [
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/brina-tosca.jpg"
-    }
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/brina-tosca.jpg" }
    ],
    "dimensi": "12 × 29 × 36 cm",
    "description": "Ransel Brina tersedia dalam 1 pilihan warna.",
@@ -675,30 +577,12 @@
    "category": "Ransel",
    "tag": "",
    "price": 160000,
-   "sizes": [
-    "Tebal 11 × Lebar 26 × Tinggi 23 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 26 × Tinggi 23 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/cici-black.jpg"
-    },
-    {
-     "name": "Blue",
-     "hex": "#4A77B4",
-     "image": "foto-product/ransel/cici-blue.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/cici-lilac.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/cici-tosca.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/cici-black.jpg" },
+    { "name": "Blue", "hex": "#4A77B4", "image": "foto-product/ransel/cici-blue.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/cici-lilac.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/cici-tosca.jpg" }
    ],
    "dimensi": "26 × 23 × 11 cm",
    "description": "Ransel Cici tersedia dalam 4 pilihan warna.",
@@ -710,25 +594,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 225000,
-   "sizes": [
-    "Tebal 12,5 × Lebar 32 × Tinggi 23 cm"
-   ],
+   "sizes": ["Tebal 12,5 × Lebar 32 × Tinggi 23 cm"],
    "colors": [
-    {
-     "name": "Blue",
-     "hex": "#4A77B4",
-     "image": "foto-product/ransel/mono-blue.jpg"
-    },
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/mono-grey.jpg"
-    },
-    {
-     "name": "Pink",
-     "hex": "#F2A7C3",
-     "image": "foto-product/ransel/mono-pink.jpg"
-    }
+    { "name": "Blue", "hex": "#4A77B4", "image": "foto-product/ransel/mono-blue.jpg" },
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/mono-grey.jpg" },
+    { "name": "Pink", "hex": "#F2A7C3", "image": "foto-product/ransel/mono-pink.jpg" }
    ],
    "dimensi": "32 × 23 × 12.5 cm",
    "description": "Ransel Mono tersedia dalam 3 pilihan warna.",
@@ -740,25 +610,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 195000,
-   "sizes": [
-    "Tebal 14 × Lebar 28 × Tinggi 32 cm"
-   ],
+   "sizes": ["Tebal 14 × Lebar 28 × Tinggi 32 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/akira-black.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/akira-lilac.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/akira-salem.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/akira-black.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/akira-lilac.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/akira-salem.jpg" }
    ],
    "dimensi": "14 × 28 × 32 cm",
    "description": "Ransel Akira tersedia dalam 3 pilihan warna.",
@@ -770,30 +626,12 @@
    "category": "Ransel",
    "tag": "",
    "price": 180000,
-   "sizes": [
-    "Tebal 11 × Lebar 24 × Tinggi 26 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 24 × Tinggi 26 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/keina-black.jpg"
-    },
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/keina-grey.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/keina-lilac.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/keina-salem.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/keina-black.jpg" },
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/keina-grey.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/keina-lilac.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/keina-salem.jpg" }
    ],
    "dimensi": "11 × 24 × 26 cm",
    "description": "Ransel Keina tersedia dalam 4 pilihan warna.",
@@ -805,30 +643,12 @@
    "category": "Ransel",
    "tag": "",
    "price": 175000,
-   "sizes": [
-    "Tebal 11 × Lebar 24 × Tinggi 25 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 24 × Tinggi 25 cm"],
    "colors": [
-    {
-     "name": "Bata",
-     "hex": "#A4472C",
-     "image": "foto-product/ransel/jeju-bata.jpg"
-    },
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/ransel/jeju-black.jpg"
-    },
-    {
-     "name": "Cream",
-     "hex": "#F1E8D2",
-     "image": "foto-product/ransel/jeju-cream.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/jeju-tosca.jpg"
-    }
+    { "name": "Bata", "hex": "#A4472C", "image": "foto-product/ransel/jeju-bata.jpg" },
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/ransel/jeju-black.jpg" },
+    { "name": "Cream", "hex": "#F1E8D2", "image": "foto-product/ransel/jeju-cream.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/jeju-tosca.jpg" }
    ],
    "dimensi": "11 × 24 × 25 cm",
    "description": "Ransel Jeju tersedia dalam 4 pilihan warna.",
@@ -840,25 +660,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 200000,
-   "sizes": [
-    "Tebal 10 × Lebar 21 × Tinggi 28 cm"
-   ],
+   "sizes": ["Tebal 10 × Lebar 21 × Tinggi 28 cm"],
    "colors": [
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/mikha-lilac.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/mikha-salem.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/mikha-tosca.jpg"
-    }
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/mikha-lilac.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/mikha-salem.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/mikha-tosca.jpg" }
    ],
    "dimensi": "10 × 21 × 28 cm",
    "description": "Ransel Mikha tersedia dalam 3 pilihan warna.",
@@ -870,25 +676,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 210000,
-   "sizes": [
-    "Tebal 13 × Lebar 24,5 × Tinggi 30 cm"
-   ],
+   "sizes": ["Tebal 13 × Lebar 24,5 × Tinggi 30 cm"],
    "colors": [
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/meysha-lilac.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/meysha-salem.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/meysha-tosca.jpg"
-    }
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/meysha-lilac.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/meysha-salem.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/meysha-tosca.jpg" }
    ],
    "dimensi": "13 × 24.5 × 30 cm",
    "description": "Ransel Meysha tersedia dalam 3 pilihan warna.",
@@ -900,25 +692,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 210000,
-   "sizes": [
-    "Tebal 10 × Lebar 23 × Tinggi 30 cm"
-   ],
+   "sizes": ["Tebal 10 × Lebar 23 × Tinggi 30 cm"],
    "colors": [
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/star-grey.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/star-salem.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/ransel/star-tosca.jpg"
-    }
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/star-grey.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/star-salem.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/ransel/star-tosca.jpg" }
    ],
    "dimensi": "10 × 23 × 30 cm",
    "description": "Ransel Star tersedia dalam 3 pilihan warna.",
@@ -930,25 +708,11 @@
    "category": "Ransel",
    "tag": "",
    "price": 215000,
-   "sizes": [
-    "Tebal 11 × Lebar 24 × Tinggi 30 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 24 × Tinggi 30 cm"],
    "colors": [
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/ransel/alyssa-grey.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/ransel/alyssa-lilac.jpg"
-    },
-    {
-     "name": "Salem",
-     "hex": "#F0A08A",
-     "image": "foto-product/ransel/alyssa-salem.jpg"
-    }
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/ransel/alyssa-grey.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/ransel/alyssa-lilac.jpg" },
+    { "name": "Salem", "hex": "#F0A08A", "image": "foto-product/ransel/alyssa-salem.jpg" }
    ],
    "dimensi": "11 × 24 × 30 cm",
    "description": "Ransel Alyssa tersedia dalam 3 pilihan warna.",
@@ -962,25 +726,11 @@
    "category": "Selempang",
    "tag": "",
    "price": 255000,
-   "sizes": [
-    "Tebal 17 × Lebar 43 × Tinggi 32 cm"
-   ],
+   "sizes": ["Tebal 17 × Lebar 43 × Tinggi 32 cm"],
    "colors": [
-    {
-     "name": "Army",
-     "hex": "#5A6B3E",
-     "image": "foto-product/selempang/holiday-army.jpg"
-    },
-    {
-     "name": "Mocca",
-     "hex": "#8A6A55",
-     "image": "foto-product/selempang/holiday-mocca.jpg"
-    },
-    {
-     "name": "Pink",
-     "hex": "#F2A7C3",
-     "image": "foto-product/selempang/holiday-pink.jpg"
-    }
+    { "name": "Army", "hex": "#5A6B3E", "image": "foto-product/selempang/holiday-army.jpg" },
+    { "name": "Mocca", "hex": "#8A6A55", "image": "foto-product/selempang/holiday-mocca.jpg" },
+    { "name": "Pink", "hex": "#F2A7C3", "image": "foto-product/selempang/holiday-pink.jpg" }
    ],
    "dimensi": "17 × 43 × 32 cm",
    "description": "Selempang Holiday tersedia dalam 3 pilihan warna."
@@ -991,30 +741,12 @@
    "category": "Selempang",
    "tag": "",
    "price": 170000,
-   "sizes": [
-    "Tebal 10 × Lebar 18,5 × Tinggi 22 cm"
-   ],
+   "sizes": ["Tebal 10 × Lebar 18,5 × Tinggi 22 cm"],
    "colors": [
-    {
-     "name": "Army",
-     "hex": "#5A6B3E",
-     "image": "foto-product/selempang/celia-army.jpg"
-    },
-    {
-     "name": "Bata",
-     "hex": "#A4472C",
-     "image": "foto-product/selempang/celia-bata.jpg"
-    },
-    {
-     "name": "Beige",
-     "hex": "#D8C7A8",
-     "image": "foto-product/selempang/celia-beige.jpg"
-    },
-    {
-     "name": "Blue",
-     "hex": "#4A77B4",
-     "image": "foto-product/selempang/celia-blue.jpg"
-    }
+    { "name": "Army", "hex": "#5A6B3E", "image": "foto-product/selempang/celia-army.jpg" },
+    { "name": "Bata", "hex": "#A4472C", "image": "foto-product/selempang/celia-bata.jpg" },
+    { "name": "Beige", "hex": "#D8C7A8", "image": "foto-product/selempang/celia-beige.jpg" },
+    { "name": "Blue", "hex": "#4A77B4", "image": "foto-product/selempang/celia-blue.jpg" }
    ],
    "dimensi": "10 × 18.5 × 22 cm",
    "description": "Selempang Celia tersedia dalam 4 pilihan warna."
@@ -1025,25 +757,11 @@
    "category": "Selempang",
    "tag": "",
    "price": 210000,
-   "sizes": [
-    "Tebal 9 × Lebar 30 × Tinggi 32 cm"
-   ],
+   "sizes": ["Tebal 9 × Lebar 30 × Tinggi 32 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/selempang/kazumi-black.jpg"
-    },
-    {
-     "name": "Cream",
-     "hex": "#F1E8D2",
-     "image": "foto-product/selempang/kazumi-cream.jpg"
-    },
-    {
-     "name": "Grey",
-     "hex": "#9B9B9B",
-     "image": "foto-product/selempang/kazumi-grey.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/selempang/kazumi-black.jpg" },
+    { "name": "Cream", "hex": "#F1E8D2", "image": "foto-product/selempang/kazumi-cream.jpg" },
+    { "name": "Grey", "hex": "#9B9B9B", "image": "foto-product/selempang/kazumi-grey.jpg" }
    ],
    "dimensi": "9 × 30 × 32 cm",
    "description": "Selempang Kazumi tersedia dalam 3 pilihan warna.",
@@ -1055,25 +773,11 @@
    "category": "Selempang",
    "tag": "",
    "price": 180000,
-   "sizes": [
-    "Tebal 10 × Lebar 23 × Tinggi 19 cm"
-   ],
+   "sizes": ["Tebal 10 × Lebar 23 × Tinggi 19 cm"],
    "colors": [
-    {
-     "name": "Bata",
-     "hex": "#A4472C",
-     "image": "foto-product/selempang/naraya-bata.jpg"
-    },
-    {
-     "name": "Lilac",
-     "hex": "#C3A6D8",
-     "image": "foto-product/selempang/naraya-lilac.jpg"
-    },
-    {
-     "name": "Tosca",
-     "hex": "#3AB5A8",
-     "image": "foto-product/selempang/naraya-tosca.jpg"
-    }
+    { "name": "Bata", "hex": "#A4472C", "image": "foto-product/selempang/naraya-bata.jpg" },
+    { "name": "Lilac", "hex": "#C3A6D8", "image": "foto-product/selempang/naraya-lilac.jpg" },
+    { "name": "Tosca", "hex": "#3AB5A8", "image": "foto-product/selempang/naraya-tosca.jpg" }
    ],
    "dimensi": "10 × 23 × 19 cm",
    "description": "Selempang Naraya tersedia dalam 3 pilihan warna.",
@@ -1087,30 +791,12 @@
    "category": "Tote Bag",
    "tag": "",
    "price": 185000,
-   "sizes": [
-    "Tebal 10 × Lebar 35 × Tinggi 39 cm"
-   ],
+   "sizes": ["Tebal 10 × Lebar 35 × Tinggi 39 cm"],
    "colors": [
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/totebag/calista-black.jpg"
-    },
-    {
-     "name": "Blue",
-     "hex": "#4A77B4",
-     "image": "foto-product/totebag/calista-blue.jpg"
-    },
-    {
-     "name": "Pink",
-     "hex": "#F2A7C3",
-     "image": "foto-product/totebag/calista-pink.jpg"
-    },
-    {
-     "name": "Sage",
-     "hex": "#9CAF88",
-     "image": "foto-product/totebag/calista-sage.jpg"
-    }
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/totebag/calista-black.jpg" },
+    { "name": "Blue", "hex": "#4A77B4", "image": "foto-product/totebag/calista-blue.jpg" },
+    { "name": "Pink", "hex": "#F2A7C3", "image": "foto-product/totebag/calista-pink.jpg" },
+    { "name": "Sage", "hex": "#9CAF88", "image": "foto-product/totebag/calista-sage.jpg" }
    ],
    "dimensi": "10 × 35 × 39 cm",
    "description": "Tote Bag Calista tersedia dalam 4 pilihan warna."
@@ -1121,25 +807,11 @@
    "category": "Tote Bag",
    "tag": "",
    "price": 180000,
-   "sizes": [
-    "Tebal 11 × Lebar 28 × Tinggi 30 cm"
-   ],
+   "sizes": ["Tebal 11 × Lebar 28 × Tinggi 30 cm"],
    "colors": [
-    {
-     "name": "Lavender",
-     "hex": "#B9A6E0",
-     "image": "foto-product/totebag/aida-lavender.jpg"
-    },
-    {
-     "name": "Mustard",
-     "hex": "#D9A520",
-     "image": "foto-product/totebag/aida-mustard.jpg"
-    },
-    {
-     "name": "White",
-     "hex": "#FFFFFF",
-     "image": "foto-product/totebag/aida-white.jpg"
-    }
+    { "name": "Lavender", "hex": "#B9A6E0", "image": "foto-product/totebag/aida-lavender.jpg" },
+    { "name": "Mustard", "hex": "#D9A520", "image": "foto-product/totebag/aida-mustard.jpg" },
+    { "name": "White", "hex": "#FFFFFF", "image": "foto-product/totebag/aida-white.jpg" }
    ],
    "dimensi": "11 × 28 × 30 cm",
    "description": "Tote Bag Aida tersedia dalam 3 pilihan warna."
@@ -1150,25 +822,11 @@
    "category": "Tote Bag",
    "tag": "",
    "price": 150000,
-   "sizes": [
-    "Tebal 8 × Lebar 24 × Tinggi 30 cm"
-   ],
+   "sizes": ["Tebal 8 × Lebar 24 × Tinggi 30 cm"],
    "colors": [
-    {
-     "name": "Bata",
-     "hex": "#A4472C",
-     "image": "foto-product/totebag/lunea-bata.jpg"
-    },
-    {
-     "name": "Black",
-     "hex": "#1A1A1A",
-     "image": "foto-product/totebag/lunea-black.jpg"
-    },
-    {
-     "name": "Milo",
-     "hex": "#7A5C43",
-     "image": "foto-product/totebag/lunea-milo.jpg"
-    }
+    { "name": "Bata", "hex": "#A4472C", "image": "foto-product/totebag/lunea-bata.jpg" },
+    { "name": "Black", "hex": "#1A1A1A", "image": "foto-product/totebag/lunea-black.jpg" },
+    { "name": "Milo", "hex": "#7A5C43", "image": "foto-product/totebag/lunea-milo.jpg" }
    ],
    "dimensi": "8 × 24 × 30 cm",
    "description": "Tote Bag Lunea tersedia dalam 3 pilihan warna."
@@ -1409,19 +1067,20 @@
             document.getElementById('modal-title').innerText = product.name;
             document.getElementById('modal-price').innerText = formatRupiah(product.price);
             document.getElementById('modal-desc').innerText = product.description;
-                        document.getElementById('qty-val').innerText = selectedQuantity;
+            document.getElementById('qty-val').innerText = selectedQuantity;
 
             // Setup Main Image
             const mainImg = document.getElementById('modal-main-img');
             mainImg.src = selectedColor.image || product.images[0];
 
             // Setup Thumbnails (Multi-Photo System)
-            const thumbnailsContainer = document.getElementById('modal-thumbnails');
-            thumbnailsContainer.innerHTML = product.images.map((imgUrl, index) => `
-                <button onclick="document.querySelectorAll('.color-btn')[${index}].click()" class="aspect-[3/4] w-10 md:w-14 shrink-0 border-2 ${index === colorIdx ? 'border-plum-600' : 'border-transparent'} overflow-hidden hover:opacity-100 transition-all thumb-btn">
+            const thumbsHTML = product.images.map((imgUrl, index) => `
+                <button data-idx="${index}" onclick="document.querySelectorAll('.color-btn')[${index}].click()" class="aspect-[3/4] w-12 md:w-14 shrink-0 border-2 ${index === colorIdx ? 'border-plum-600' : 'border-transparent'} overflow-hidden hover:opacity-100 transition-all thumb-btn">
                     <img src="${imgUrl}" class="w-full h-full object-cover bg-cream-100">
                 </button>
             `).join('');
+            document.getElementById('modal-thumbnails').innerHTML = thumbsHTML;
+            document.getElementById('modal-thumbnails-m').innerHTML = thumbsHTML;
 
             // Render Color Swatches
             const colorsContainer = document.getElementById('modal-colors');
@@ -1455,7 +1114,7 @@
             if (col) {
                 document.getElementById('modal-main-img').src = col.image;
                 const ci = currentActiveProduct.colors.indexOf(col);
-                document.querySelectorAll('.thumb-btn').forEach((b, i) => { b.classList.toggle('border-plum-600', i === ci); b.classList.toggle('border-transparent', i !== ci); });
+                document.querySelectorAll('.thumb-btn').forEach(b => { const on = +b.dataset.idx === ci; b.classList.toggle('border-plum-600', on); b.classList.toggle('border-transparent', !on); });
             }
             document.getElementById('selected-color-label').innerText = colorName;
             document.querySelectorAll('.color-btn').forEach(b => {
